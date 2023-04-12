@@ -12,7 +12,7 @@ public abstract class MinecraftClientMixin {
     @ModifyConstant(method = "handleInputEvents",
             constant = @Constant(intValue = 9, ordinal = 0))
     private int hotbarSize(int value) {
-        return 18;
+        return 12;
     }
 
     @ModifyArg(method = "doItemPick",

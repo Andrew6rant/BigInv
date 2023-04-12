@@ -22,12 +22,12 @@ public class BigInvScreenHandlerHelper {
 
     public static Slot[] createSlots(ScreenHandler handler, PlayerInventory playerInventory) {
         ScreenHandlerExt handlerX = (ScreenHandlerExt) handler;
-        Slot[] slots = new Slot[113];
+        Slot[] slots = new Slot[77];
 
         handlerX.biginv$setModStage(BigInvModStage.MODDING);
 
-        for(int i = 0; i < 90; ++i) {
-            int index = i + 18;
+        for(int i = 0; i < 60; ++i) {
+            int index = i + 12;
             slots[index] = handlerX.biginv$addSlot(new Slot(
                     playerInventory,
                     index,
@@ -35,7 +35,7 @@ public class BigInvScreenHandlerHelper {
                     -9999));
         }
 
-        for(int i = 0; i < 18; ++i) {
+        for(int i = 0; i < 12; ++i) {
             slots[i] = handlerX.biginv$addSlot(new Slot(
                     playerInventory,
                     i,
@@ -44,7 +44,7 @@ public class BigInvScreenHandlerHelper {
         }
 
 
-        slots[112] = handlerX.biginv$addSlot(new Slot(playerInventory, 112, -9999, -9999) {
+        slots[76] = handlerX.biginv$addSlot(new Slot(playerInventory, 76, -9999, -9999) {
             public void setStack(ItemStack stack) {
                 PlayerScreenHandler.onEquipStack(playerInventory.player, EquipmentSlot.OFFHAND, stack, this.getStack()); // I need to use PlayerEntity owner, not null
                 super.setStack(stack);
@@ -55,7 +55,7 @@ public class BigInvScreenHandlerHelper {
         });
 
         for(int i = 0; i < 4; ++i) {
-            int index = 111 - i;
+            int index = 75 - i;
             final EquipmentSlot equipmentSlot = EQUIPMENT_SLOT_ORDER[i];
             slots[index] = handlerX.biginv$addSlot(new Slot(playerInventory, index, -9999, -9999) {
                 public void setStack(ItemStack stack) {
@@ -89,29 +89,29 @@ public class BigInvScreenHandlerHelper {
     public static void positionSlots(Slot[] slots, int offsetX, int offsetY, int armourOffsetX, int armourOffsetY) {
 
         for(int row = 0; row < 5; ++row) {
-            for(int col = 0; col < 18; ++col) {
+            for(int col = 0; col < 12; ++col) {
                 move(slots,
-                        col + row * 18 + 18,
-                        col * 18 - 154 + offsetX,
+                        col + row * 12 + 12,
+                        col * 18 - 46 + offsetX,
                         84 + row * 18 + offsetY);
             }
         }
 
-        for(int col = 0; col < 18; ++col) {
+        for(int col = 0; col < 12; ++col) {
             move(slots,
                     col,
-                    col * 18 - 154 + offsetX,
+                    col * 18 - 46 + offsetX,
                     offsetY + 178);
         }
 
         move(slots,
-                112,
+                76,
                 armourOffsetX - 85,
                 armourOffsetY + 62);
 
         for(int row = 0; row < 4; ++row) {
             move(slots,
-                    111 - row,
+                    75 - row,
                     armourOffsetX - 154,
                     armourOffsetY + 8 + row * 18);
         }

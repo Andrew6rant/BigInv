@@ -10,12 +10,12 @@ public abstract class CraftingScreenHandlerMixin {
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 46))
     private int invEnd(int constant) {
-        return 118;
+        return 82;
     }
 
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 37))
     private int hotbarStart(int constant) {
-        return 100;
+        return 70;
     }
 }

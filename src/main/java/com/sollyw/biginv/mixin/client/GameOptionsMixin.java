@@ -30,12 +30,6 @@ public abstract class GameOptionsMixin {
         this.hotbarKeys = ArrayUtils.addAll(this.hotbarKeys,
                 new KeyBinding("key.hotbar.a", GLFW.GLFW_KEY_0, KeyBinding.INVENTORY_CATEGORY),
                 new KeyBinding("key.hotbar.b", GLFW.GLFW_KEY_MINUS, KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.c", GLFW.GLFW_KEY_EQUAL, KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.d", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.e", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.f", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.g", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.h", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY),
-                new KeyBinding("key.hotbar.i", InputUtil.UNKNOWN_KEY.getCode(), KeyBinding.INVENTORY_CATEGORY));
+                new KeyBinding("key.hotbar.c", GLFW.GLFW_KEY_EQUAL, KeyBinding.INVENTORY_CATEGORY));
     }
 }

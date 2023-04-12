@@ -25,9 +25,9 @@ public abstract class PlayerInventoryMixin {
     @Inject(method = "<clinit>",
             at = @At("TAIL"))
     private static void clinit(CallbackInfo ci) {
-        MAIN_SIZE = 108;
-        HOTBAR_SIZE = 18;
-        OFF_HAND_SLOT = 112;
+        MAIN_SIZE = 72;
+        HOTBAR_SIZE = 12;
+        OFF_HAND_SLOT = 76;
     }
 
     /**
@@ -36,31 +36,31 @@ public abstract class PlayerInventoryMixin {
      */
     @Overwrite
     public static int getHotbarSize() {
-        return 18;
+        return 12;
     }
 
     @ModifyConstant(method = {"getSwappableHotbarSlot", "scrollInHotbar"},
             constant = @Constant(intValue = 9))
     private int hotbarSize(int value) {
-        return 18;
+        return 12;
     }
 
     @ModifyConstant(method = "isValidHotbarIndex",
             constant = @Constant(intValue = 9))
     private static int hotbarSize2(int value) {
-        return 18;
+        return 12;
     }
 
     @ModifyConstant(method = "getOccupiedSlotWithRoomForStack",
             constant = @Constant(intValue = 40))
     private int offhandSlot(int value) {
-        return 112;
+        return 76;
     }
 
     @ModifyConstant(method = {"readNbt", "writeNbt"},
             constant = @Constant(intValue = 100))
     private int armourSlotNbtOffset(int value) {
-        return 110;
+        return 74;
     }
 
     @ModifyArg(method = "<init>",
@@ -69,6 +69,6 @@ public abstract class PlayerInventoryMixin {
                     ordinal = 0),
             index = 0)
     private int size(int size) {
-        return 108;
+        return 72;
     }
 }

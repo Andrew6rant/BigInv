@@ -22,7 +22,7 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
      */
     @Overwrite
     public static boolean isInHotbar(int slot) {
-        return slot >= 108 && slot <= 126;
+        return slot >= 72 && slot <= 84;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -52,7 +52,7 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
                     @Constant(intValue = 36,
                             ordinal = 3)})
     private int mainInvEndHotbarStart(int value) {
-        return 95;
+        return 65;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -70,7 +70,7 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
                     @Constant(intValue = 45,
                             ordinal = 7)})
     private int hotbarEndArmourStart(int value) {
-        return 113;
+        return 77;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -80,7 +80,7 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
                     @Constant(intValue = 8,
                             ordinal = 1)})
     private int armourLast(int value) {
-        return 116;
+        return 80;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -92,14 +92,14 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
                     @Constant(intValue = 45,
                             ordinal = 4)})
     private int armourEndOffhandStart(int value) {
-        return 117;
+        return 81;
     }
 
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 46,
                             ordinal = 0))
     private int offhandEnd(int value) {
-        return 118;
+        return 82;
     }
 
     @Override

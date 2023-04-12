@@ -34,7 +34,7 @@ public class BigInvScreenHelper {
 
         if (entity instanceof PlayerEntity) {
             int x0 = x - 16;
-            int y0 = y + backgroundHeight - 115;
+            int y0 = y + backgroundHeight - 112;
             int playerEntityDrawSize = 16;
             // if handled screen is instanceof playerscreenhandler
             if (((PlayerEntity) entity).currentScreenHandler instanceof PlayerScreenHandler) {
@@ -57,7 +57,7 @@ public class BigInvScreenHelper {
                         y + backgroundHeight - 166,
                         112,
                         0,
-                        64,
+                        58,
                         83,
                         256,
                         256);

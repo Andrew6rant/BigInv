@@ -1,6 +1,7 @@
 package com.sollyw.biginv.mixin;
 
 import com.sollyw.biginv.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.ScreenHandler;
@@ -55,7 +56,8 @@ public abstract class ScreenHandlerMixin implements ScreenHandlerExt {
                             info.slotOffsetX().applyTo(slot.x - 8),
                             info.slotOffsetY().applyTo(slot.y - 142),
                             info.armourSlotOffsetX().applyTo(slot.x - 8),
-                            info.armourSlotOffsetY().applyTo(slot.y - 142));
+                            info.armourSlotOffsetY().applyTo(slot.y - 142),
+                            ((PlayerInventory) slot.inventory).player);
                 }
 
                 if (info.shouldEmulateVanillaSlots()) {
@@ -94,10 +96,10 @@ public abstract class ScreenHandlerMixin implements ScreenHandlerExt {
     }
 
     @Override
-    public void biginv$positionSlots(int offsetX, int offsetY, int armourOffsetX, int armourOffsetY) {
+    public void biginv$positionSlots(int offsetX, int offsetY, int armourOffsetX, int armourOffsetY, PlayerEntity player) {
 
         if (this.bigInvSlots != null) {
-            BigInvScreenHandlerHelper.positionSlots(this.bigInvSlots, offsetX, offsetY, armourOffsetX, armourOffsetY);
+            BigInvScreenHandlerHelper.positionSlots(this.bigInvSlots, offsetX, offsetY, armourOffsetX, armourOffsetY, player);
         }
     }
 

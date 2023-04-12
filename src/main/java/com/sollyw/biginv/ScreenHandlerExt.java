@@ -2,6 +2,7 @@ package com.sollyw.biginv;
 
 import com.sollyw.biginv.mixin.ScreenHandlerMixin;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
@@ -27,7 +28,7 @@ public interface ScreenHandlerExt {
 
     Slot biginv$addSlot(Slot slot);
 
-    void biginv$positionSlots(int offsetX, int offsetY, int armourOffsetX, int armourOffsetY);
+    void biginv$positionSlots(int offsetX, int offsetY, int armourOffsetX, int armourOffsetY, PlayerEntity player);
 
     ScreenHandlerType<?> biginv$getType();
 }

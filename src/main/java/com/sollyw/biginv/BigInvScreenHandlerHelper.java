@@ -86,7 +86,7 @@ public class BigInvScreenHandlerHelper {
         return slots;
     }
 
-    public static void positionSlots(Slot[] slots, int offsetX, int offsetY, int armourOffsetX, int armourOffsetY) {
+    public static void positionSlots(Slot[] slots, int offsetX, int offsetY, int armourOffsetX, int armourOffsetY, PlayerEntity player) {
 
         for(int row = 0; row < 5; ++row) {
             for(int col = 0; col < 12; ++col) {
@@ -103,18 +103,29 @@ public class BigInvScreenHandlerHelper {
                     col * 18 - 46 + offsetX,
                     offsetY + 178);
         }
+        // offhand
+        if (player.currentScreenHandler instanceof PlayerScreenHandler) {
+            move(slots,
+                    76,
+                    armourOffsetX - 36,
+                    armourOffsetY + 62);
+        } else {
+            move(slots,
+                    76,
+                    armourOffsetX - 90,
+                    armourOffsetY + 62);
+        }
 
-        move(slots,
-                76,
-                armourOffsetX - 85,
-                armourOffsetY + 62);
 
+
+        // armor
         for(int row = 0; row < 4; ++row) {
             move(slots,
                     75 - row,
-                    armourOffsetX - 154,
+                    armourOffsetX - 108,
                     armourOffsetY + 8 + row * 18);
         }
+
     }
 
     private static void move(Slot[] slots, int index, int x, int y) {

@@ -58,7 +58,8 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
                     info.slotOffsetX().applyTo(Math.min(backgroundWidth - 176, 62)),
                     info.slotOffsetY().applyTo(this.backgroundHeight - 166),
                     info.armourSlotOffsetX().applyTo(62),
-                    info.armourSlotOffsetY().applyTo(this.backgroundHeight - 166));
+                    info.armourSlotOffsetY().applyTo(this.backgroundHeight - 166),
+                    this.client == null ? null : this.client.player); ///
         }
 
         if (info.shouldAlignInventoryTitle()) {

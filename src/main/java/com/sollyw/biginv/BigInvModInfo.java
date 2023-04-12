@@ -135,7 +135,7 @@ public record BigInvModInfo(
             true,
             IntOffset.NONE,
             IntOffset.NONE,
-            new IntOffset(false, 90),
+            IntOffset.NONE, // new IntOffset(false, 90),
             IntOffset.NONE,
             false,
             IntOffset.NONE,

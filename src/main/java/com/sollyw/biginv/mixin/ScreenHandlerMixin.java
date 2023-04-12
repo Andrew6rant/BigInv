@@ -109,6 +109,6 @@ public abstract class ScreenHandlerMixin implements ScreenHandlerExt {
     private static int offsetSlotId(int slot) {
         if (slot < 9) return slot;
         else if (slot < 36) return slot + 9;
-        else return slot + 72;
+        else return slot + 36;
     }
 }

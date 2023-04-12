@@ -142,9 +142,9 @@ public record BigInvModInfo(
             IntOffset.NONE,
             true,
             RightmostBehaviour.CAP,
-            new IntOffset(false, 90),
             IntOffset.NONE,
-            new IntOffset(false, -90),
+            IntOffset.NONE,
+            IntOffset.NONE,
             IntOffset.NONE);
 
     public static final BigInvModInfo MERCHANT = new BigInvModInfo(

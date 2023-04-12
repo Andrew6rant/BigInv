@@ -46,7 +46,7 @@ public class BigInvScreenHandlerHelper {
 
         slots[76] = handlerX.biginv$addSlot(new Slot(playerInventory, 76, -9999, -9999) {
             public void setStack(ItemStack stack) {
-                PlayerScreenHandler.onEquipStack(playerInventory.player, EquipmentSlot.OFFHAND, stack, this.getStack()); // I need to use PlayerEntity owner, not null
+                PlayerScreenHandler.onEquipStack(playerInventory.player, EquipmentSlot.OFFHAND, stack, this.getStack());
                 super.setStack(stack);
             }
             public Pair<Identifier, Identifier> getBackgroundSprite() {

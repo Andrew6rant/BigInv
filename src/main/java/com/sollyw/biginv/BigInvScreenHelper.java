@@ -7,10 +7,13 @@ import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 
 public class BigInvScreenHelper {
-    public static final Identifier MOD_BACKGROUND = BigInv.id("textures/gui/inventory_mod_background.png");
+    public static final Identifier MOD_BACKGROUND = BigInv.id("textures/gui/littlebiginv_background.png");
+    //public static final Identifier MOD_BACKGROUND = BigInv.id("textures/gui/inventory_mod_background.png");
     public static final Identifier BIG_HOTBAR = BigInv.id("textures/gui/big_hotbar.png");
 
     public static void patchScreen(MatrixStack matrices, int x, int y, int backgroundWidth, int backgroundHeight,
@@ -18,7 +21,59 @@ public class BigInvScreenHelper {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, MOD_BACKGROUND);
+        // draw main inventory
+        DrawableHelper.drawTexture(matrices,
+                x + backgroundWidth - 230,
+                y + backgroundHeight - 83,
+                0,
+                137,
+                230,
+                119,
+                256,
+                256);
 
+        if (entity instanceof PlayerEntity) {
+            int x0 = x - 16;
+            int y0 = y + backgroundHeight - 115;
+            int playerEntityDrawSize = 16;
+            // if handled screen is instanceof playerscreenhandler
+            if (((PlayerEntity) entity).currentScreenHandler instanceof PlayerScreenHandler) {
+                playerEntityDrawSize = 30;
+                x0 = x - 4;
+                y0 = y + backgroundHeight - 95;
+
+                DrawableHelper.drawTexture(matrices,
+                        x + backgroundWidth - 230,
+                        y + backgroundHeight - 166,
+                        0,
+                        0,
+                        104,
+                        83,
+                        256,
+                        256);
+            } else {
+                DrawableHelper.drawTexture(matrices,
+                        x + backgroundWidth - 230,
+                        y + backgroundHeight - 166,
+                        112,
+                        0,
+                        64,
+                        83,
+                        256,
+                        256);
+            }
+            InventoryScreen.drawEntity(matrices,
+                    x0,
+                    y0,
+                    playerEntityDrawSize,
+                    (float)(x0 - mouseX),
+                    (float)(y0 - 50 - mouseY),
+                    entity);
+        }
+
+
+
+/*
         // Bottom right block
         if (rightmostBehaviour == RightmostBehaviour.EXTEND_FROM_RIGHT) {
             DrawableHelper.drawTexture(matrices,
@@ -121,16 +176,6 @@ public class BigInvScreenHelper {
                     256);
         }
 
-        if (entity != null) {
-            int x0 = x - 49;
-            int y0 = y + backgroundHeight - 91;
-            InventoryScreen.drawEntity(matrices,
-                    x0,
-                    y0,
-                    30,
-                    (float)(x0 - mouseX),
-                    (float)(y0 - 50 - mouseY),
-                    entity);
-        }
+        */
     }
 }

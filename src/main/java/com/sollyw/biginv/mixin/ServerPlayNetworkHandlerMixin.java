@@ -10,6 +10,8 @@ public abstract class ServerPlayNetworkHandlerMixin {
     @ModifyConstant(method = {"onCreativeInventoryAction"},
             constant = @Constant(intValue = 45))
     private int change(int value) {
-        return value + 72;
+        // this does not work
+        System.out.println("Changing "+value+" to "+(value+72)+"!");
+        return value+72;
     }
 }

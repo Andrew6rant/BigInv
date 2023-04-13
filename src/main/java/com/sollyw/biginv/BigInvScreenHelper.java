@@ -8,6 +8,7 @@ import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.screen.GenericContainerScreenHandler;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 
@@ -32,32 +33,58 @@ public class BigInvScreenHelper {
                 256,
                 256);
 
+        // draw armor bar
+        DrawableHelper.drawTexture(matrices,
+                x + backgroundWidth - 230,
+                y + backgroundHeight - 166,
+                0,
+                0,
+                25,
+                83,
+                256,
+                256);
+
         if (entity instanceof PlayerEntity) {
-            int x0 = x - 16;
+            int x0 = x - 11;
             int y0 = y + backgroundHeight - 112;
-            int playerEntityDrawSize = 16;
-            // if handled screen is instanceof playerscreenhandler
+            int playerEntityDrawSize = 21;
+            // if handled screen is instanceof PlayerScreenHandler
             if (((PlayerEntity) entity).currentScreenHandler instanceof PlayerScreenHandler) {
                 playerEntityDrawSize = 30;
-                x0 = x - 4;
+                x0 = x - 2;
                 y0 = y + backgroundHeight - 95;
 
                 DrawableHelper.drawTexture(matrices,
-                        x + backgroundWidth - 230,
+                        x + backgroundWidth - 205,
                         y + backgroundHeight - 166,
+                        25,
                         0,
+                        79,
+                        83,
+                        256,
+                        256);
+            } else if (((PlayerEntity) entity).currentScreenHandler instanceof GenericContainerScreenHandler) {
+                // if handled screen is instanceof GenericContainerScreenHandler (e.g. chest)
+                playerEntityDrawSize = 17;
+                x0 = x - 16;
+                y0 = y + backgroundHeight - 112;
+
+                DrawableHelper.drawTexture(matrices,
+                        x + backgroundWidth - 205,
+                        y + backgroundHeight - 166,
+                        148,
                         0,
-                        104,
+                        33,
                         83,
                         256,
                         256);
             } else {
                 DrawableHelper.drawTexture(matrices,
-                        x + backgroundWidth - 230,
+                        x + backgroundWidth - 205,
                         y + backgroundHeight - 166,
                         112,
                         0,
-                        58,
+                        36,
                         83,
                         256,
                         256);

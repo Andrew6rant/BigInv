@@ -3,6 +3,7 @@ package com.sollyw.biginv.mixin;
 import com.sollyw.biginv.BigInvModInfo;
 import com.sollyw.biginv.ScreenHandlerOverrides;
 import com.sollyw.biginv.ScreenHandlerExt;
+import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,6 +17,43 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
     @Unique
     private static final Identifier PLAYER = new Identifier("minecraft", "player");
 
+    @ModifyConstant(method = "<init>",
+            constant = {
+                    @Constant(intValue = 2,
+                            ordinal = 0),
+                    @Constant(intValue = 2,
+                            ordinal = 1),
+                    @Constant(intValue = 2,
+                            ordinal = 2),
+                    @Constant(intValue = 2,
+                            ordinal = 3),
+                    @Constant(intValue = 2,
+                            ordinal = 4),})
+    private int craftingInvSize(int value) {
+        return 3;
+    }
+
+    @ModifyConstant(method = "<init>(Lnet/minecraft/entity/player/PlayerInventory;ZLnet/minecraft/entity/player/PlayerEntity;)V",
+            constant = @Constant(intValue = 98, ordinal = 0))
+    private int craftingInvStart(int value) {
+        return 71;
+    }
+
+    @ModifyConstant(method = "<init>(Lnet/minecraft/entity/player/PlayerInventory;ZLnet/minecraft/entity/player/PlayerEntity;)V",
+        constant = @Constant(intValue = 154, ordinal = 0))
+    private int craftingResultSlotX(int value) {
+        return 152;
+    }
+
+    @ModifyConstant(method = "<init>(Lnet/minecraft/entity/player/PlayerInventory;ZLnet/minecraft/entity/player/PlayerEntity;)V",
+            constant = @Constant(intValue = 28, ordinal = 0))
+    private int craftingResultSlotY(int value) {
+        return 19;
+    }
+
+
+    //public final CraftingInventory craftingInput = new CraftingInventory(this, 2, 2);
+
     /**
      * @author SollyW
      * @reason Account for larger hotbar
@@ -23,6 +61,15 @@ public abstract class PlayerScreenHandlerMixin implements ScreenHandlerExt {
     @Overwrite
     public static boolean isInHotbar(int slot) {
         return slot >= 72 && slot <= 84;
+    }
+
+    /**
+     * @author Andrew6rant (Andrew Grant)
+     * @reason Account for larger crafting screen
+     */
+    @Overwrite
+    public int getCraftingSlotCount() {
+        return 10;
     }
 
     @ModifyConstant(method = "quickMove",

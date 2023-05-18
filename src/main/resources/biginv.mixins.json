@@ -13,7 +13,8 @@
     "PlayerScreenHandlerMixin",
     "ScreenHandlerMixin",
     "ShulkerBoxScreenHandlerMixin",
-    "SlotAccessor"
+    "SlotAccessor",
+    "compat.TrinketsScreenHandlerMixin"
   ],
   "client": [
     "client.AbstractFurnaceScreenMixin",

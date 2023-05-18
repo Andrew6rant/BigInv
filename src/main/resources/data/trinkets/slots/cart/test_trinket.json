@@ -1,0 +1,5 @@
+{
+  "icon": "biginv:gui/trinkets_slot",
+  "drop_rule": "default",
+  "validator_predicates": [ "biginv:biginv", "trinkets:tag" ]
+}

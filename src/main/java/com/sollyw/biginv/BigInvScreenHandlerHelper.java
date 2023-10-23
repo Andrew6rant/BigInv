@@ -22,11 +22,11 @@ public class BigInvScreenHandlerHelper {
 
     public static Slot[] createSlots(ScreenHandler handler, PlayerInventory playerInventory) {
         ScreenHandlerExt handlerX = (ScreenHandlerExt) handler;
-        Slot[] slots = new Slot[77];
+        Slot[] slots = new Slot[65];
 
         handlerX.biginv$setModStage(BigInvModStage.MODDING);
 
-        for(int i = 0; i < 60; ++i) {
+        for(int i = 0; i < 48; ++i) {
             int index = i + 12;
             slots[index] = handlerX.biginv$addSlot(new Slot(
                     playerInventory,
@@ -44,7 +44,7 @@ public class BigInvScreenHandlerHelper {
         }
 
 
-        slots[76] = handlerX.biginv$addSlot(new Slot(playerInventory, 76, -9999, -9999) {
+        slots[64] = handlerX.biginv$addSlot(new Slot(playerInventory, 64, -9999, -9999) {
             public void setStack(ItemStack stack) {
                 PlayerScreenHandler.onEquipStack(playerInventory.player, EquipmentSlot.OFFHAND, stack, this.getStack());
                 super.setStack(stack);
@@ -55,7 +55,7 @@ public class BigInvScreenHandlerHelper {
         });
 
         for(int i = 0; i < 4; ++i) {
-            int index = 75 - i;
+            int index = 63 - i;
             final EquipmentSlot equipmentSlot = EQUIPMENT_SLOT_ORDER[i];
             slots[index] = handlerX.biginv$addSlot(new Slot(playerInventory, index, -9999, -9999) {
                 public void setStack(ItemStack stack) {
@@ -88,7 +88,7 @@ public class BigInvScreenHandlerHelper {
 
     public static void positionSlots(Slot[] slots, int offsetX, int offsetY, int armourOffsetX, int armourOffsetY, PlayerEntity player) {
 
-        for(int row = 0; row < 5; ++row) {
+        for(int row = 0; row < 4; ++row) {
             for(int col = 0; col < 12; ++col) {
                 move(slots,
                         col + row * 12 + 12,
@@ -101,17 +101,18 @@ public class BigInvScreenHandlerHelper {
             move(slots,
                     col,
                     col * 18 - 46 + offsetX,
-                    offsetY + 178);
+                    offsetY + 160);
         }
+
         // offhand
         if (player.currentScreenHandler instanceof PlayerScreenHandler) {
             move(slots,
-                    76,
+                    64,
                     armourOffsetX - 36,
                     armourOffsetY + 62);
         } else {
             move(slots,
-                    76,
+                    64,
                     armourOffsetX - 90,
                     armourOffsetY + 62);
         }
@@ -121,7 +122,7 @@ public class BigInvScreenHandlerHelper {
         // armor
         for(int row = 0; row < 4; ++row) {
             move(slots,
-                    75 - row,
+                    63 - row,
                     armourOffsetX - 108,
                     armourOffsetY + 8 + row * 18);
         }

@@ -37,7 +37,7 @@ public abstract class MerchantScreenMixin extends HandledScreen<MerchantScreenHa
     private int levelBarOffsetY(int value) {
         return 96;
     }
-
+/*
     @ModifyArg(method = "drawForeground",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/text/Text;FFI)I"),
@@ -58,7 +58,7 @@ public abstract class MerchantScreenMixin extends HandledScreen<MerchantScreenHa
                     ordinal = 1))
     public void drawTexture0(MatrixStack matrices, int x, int y, int z, float u, float v, int width, int height, int textureWidth, int textureHeight) {
         MerchantScreen.drawTexture(matrices, x - 20, y + 80, z, u, v, width, height, textureWidth, textureHeight);
-    }
+    }*/
 
     @Redirect(method = "render",
             at = @At(value = "INVOKE",

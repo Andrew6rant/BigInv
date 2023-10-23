@@ -23,12 +23,12 @@ public abstract class CraftingScreenMixin {
     private void init(CallbackInfo ci) {
         this.narrow = true;
     }
-
+/*
     @Redirect(method = "render",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/CraftingScreen;drawBackground(Lnet/minecraft/client/util/math/MatrixStack;FII)V"),
             allow = 1)
     private void drawBackground(CraftingScreen instance, MatrixStack matrices, float delta, int mouseX, int mouseY) {
         // nom
-    }
+    }*/
 }

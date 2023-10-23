@@ -2,7 +2,7 @@ package com.sollyw.biginv.mixin.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sollyw.biginv.BigInvScreenHelper;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(InGameHud.class)
 public abstract class InGameHudMixin {
-
+/*
     @Shadow
     protected abstract void renderHotbarItem(MatrixStack matrixStack, int i, int j, float f, PlayerEntity playerEntity, ItemStack itemStack, int k);
 
@@ -98,7 +98,7 @@ public abstract class InGameHudMixin {
                     ordinal = 0))
     private void drawTexture(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
         RenderSystem.setShaderTexture(0, BigInvScreenHelper.BIG_HOTBAR);
-        DrawableHelper.drawTexture(matrices, x - 30, y, 0, 0, 242, height, 256, 32);
+        DrawContext.drawTexture(matrices, x - 30, y, 0, 0, 242, height, 256, 32);
         RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
     }
 
@@ -108,5 +108,5 @@ public abstract class InGameHudMixin {
                     ordinal = 1), index = 1)
     private int moveSelectionOutline(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
         return x - 30;
-    }
+    }*/
 }

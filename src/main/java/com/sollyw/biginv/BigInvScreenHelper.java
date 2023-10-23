@@ -2,7 +2,7 @@ package com.sollyw.biginv;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sollyw.biginv.BigInvModInfo.RightmostBehaviour;
-import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
@@ -17,13 +17,13 @@ public class BigInvScreenHelper {
     //public static final Identifier MOD_BACKGROUND = BigInv.id("textures/gui/inventory_mod_background.png");
     public static final Identifier BIG_HOTBAR = BigInv.id("textures/gui/big_hotbar.png");
 
-    public static void patchScreen(MatrixStack matrices, int x, int y, int backgroundWidth, int backgroundHeight,
+    public static void patchScreen(DrawContext context, int x, int y, int backgroundWidth, int backgroundHeight,
                                    int mouseX, int mouseY, LivingEntity entity, RightmostBehaviour rightmostBehaviour) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, MOD_BACKGROUND);
         // draw main inventory
-        DrawableHelper.drawTexture(matrices,
+        context.drawTexture(MOD_BACKGROUND,
                 x + backgroundWidth - 230,
                 y + backgroundHeight - 83,
                 0,
@@ -34,7 +34,7 @@ public class BigInvScreenHelper {
                 256);
 
         // draw armor bar
-        DrawableHelper.drawTexture(matrices,
+        context.drawTexture(MOD_BACKGROUND,
                 x + backgroundWidth - 230,
                 y + backgroundHeight - 166,
                 0,
@@ -54,7 +54,7 @@ public class BigInvScreenHelper {
                 x0 = x - 2;
                 y0 = y + backgroundHeight - 95;
 
-                DrawableHelper.drawTexture(matrices,
+                context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,
                         y + backgroundHeight - 166,
                         25,
@@ -69,7 +69,7 @@ public class BigInvScreenHelper {
                 x0 = x - 16;
                 y0 = y + backgroundHeight - 112;
 
-                DrawableHelper.drawTexture(matrices,
+                context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,
                         y + backgroundHeight - 166,
                         148,
@@ -79,7 +79,7 @@ public class BigInvScreenHelper {
                         256,
                         256);
             } else {
-                DrawableHelper.drawTexture(matrices,
+                context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,
                         y + backgroundHeight - 166,
                         112,
@@ -89,7 +89,7 @@ public class BigInvScreenHelper {
                         256,
                         256);
             }
-            InventoryScreen.drawEntity(matrices,
+            InventoryScreen.drawEntity(context,
                     x0,
                     y0,
                     playerEntityDrawSize,

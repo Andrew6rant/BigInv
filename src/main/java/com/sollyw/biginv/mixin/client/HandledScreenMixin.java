@@ -71,10 +71,10 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             this.playerInventoryTitleY = info.inventoryTitleOffsetY().applyTo(this.playerInventoryTitleY);
         }
     }
-/*
+
     @Inject(method = "render",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawBackground(Lnet/minecraft/client/util/math/MatrixStack;FII)V",
+                    target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawBackground(Lnet/minecraft/client/gui/DrawContext;FII)V",
                     shift = At.Shift.AFTER))
     private void renderBigInvOverlay(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         BigInvModInfo info = ((ScreenHandlerExt) this.handler).biginv$getModInfo();
@@ -90,7 +90,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
                     this.client == null ? null : this.client.player,
                     info.rightmostBehaviour());
         }
-    }*/
+    }
 
     @Redirect(method = {"mouseReleased", "mouseClicked"},
             at = @At(value = "INVOKE",

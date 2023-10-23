@@ -17,9 +17,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(InGameHud.class)
 public abstract class InGameHudMixin {
-/*
+
     @Shadow
-    protected abstract void renderHotbarItem(MatrixStack matrixStack, int i, int j, float f, PlayerEntity playerEntity, ItemStack itemStack, int k);
+    protected abstract void renderHotbarItem(DrawContext context, int x, int y, float f, PlayerEntity player, ItemStack stack, int seed);
 
     @Shadow
     private int scaledWidth;
@@ -33,12 +33,12 @@ public abstract class InGameHudMixin {
 
     @Redirect(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/util/math/MatrixStack;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
+                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 0))
-    private void renderHotbarItem(InGameHud instance, MatrixStack matrixStack, int x, int y, float tickDelta, PlayerEntity player, ItemStack itemStack, int seed) {
+    private void renderHotbarItem(InGameHud instance, DrawContext context, int x, int y, float tickDelta, PlayerEntity player, ItemStack stack, int seed) {
         //int n2 = (x + 40 - this.scaledWidth / 2) / 20;
         //System.out.println("this.scaledWidth: " + this.scaledWidth);
-        this.renderHotbarItem(matrixStack,
+        this.renderHotbarItem(context,
                 x - 30,
                 y,
                 tickDelta,
@@ -46,7 +46,7 @@ public abstract class InGameHudMixin {
                 this.getCameraPlayer().getInventory().main.get(seed-1),
                 seed);
         if (seed > 6) {
-            this.renderHotbarItem(matrixStack,
+            this.renderHotbarItem(context,
                     x + 30,
                     y,
                     tickDelta,
@@ -58,7 +58,7 @@ public abstract class InGameHudMixin {
 
     @ModifyArg(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/util/math/MatrixStack;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
+                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 1),
             index = 1)
     private int moveOffhandLeft(int x) {
@@ -67,7 +67,7 @@ public abstract class InGameHudMixin {
 
     @ModifyArg(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/util/math/MatrixStack;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
+                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 2),
             index = 1)
     private int moveOffhandRight(int x) {
@@ -76,37 +76,37 @@ public abstract class InGameHudMixin {
 
     @ModifyArg(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V",
+                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 2),
             index = 1)
-    private int moveOffhandItemLeft(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
+    private int moveOffhandItemLeft(int x) {
         return x - 30;
     }
 
     @ModifyArg(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V",
+                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 3),
             index = 1)
-    private int moveOffhandItemRight(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
+    private int moveOffhandItemRight(int x) {
         return x + 30;
     }
 
     @Redirect(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V",
+                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 0))
-    private void drawTexture(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
-        RenderSystem.setShaderTexture(0, BigInvScreenHelper.BIG_HOTBAR);
-        DrawContext.drawTexture(matrices, x - 30, y, 0, 0, 242, height, 256, 32);
-        RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
+    private void drawTexture(DrawContext context, Identifier texture, int x, int y, int u, int v, int width, int height) {
+        //RenderSystem.setShaderTexture(0, BigInvScreenHelper.BIG_HOTBAR);
+        context.drawTexture(BigInvScreenHelper.BIG_HOTBAR, x - 30, y, 0, 0, 242, height, 256, 32);
+        //RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
     }
 
     @ModifyArg(method = "renderHotbar",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/hud/InGameHud;drawTexture(Lnet/minecraft/client/util/math/MatrixStack;IIIIII)V",
+                    target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 1), index = 1)
-    private int moveSelectionOutline(MatrixStack matrices, int x, int y, int u, int v, int width, int height) {
+    private int moveSelectionOutline(int x) {
         return x - 30;
-    }*/
+    }
 }

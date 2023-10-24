@@ -10,8 +10,8 @@ public abstract class ClientPlayerInteractionManagerMixin {
      * @author SollyW
      * @reason Creative inventory is unsupported for now
      */
-    @Overwrite
+    /*@Overwrite
     public boolean hasCreativeInventory() {
         return false;
-    }
+    }*/
 }

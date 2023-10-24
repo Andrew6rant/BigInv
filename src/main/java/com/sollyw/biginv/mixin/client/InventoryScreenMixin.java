@@ -22,7 +22,7 @@ public abstract class InventoryScreenMixin {
                     opcode = Opcodes.PUTFIELD,
                     shift = At.Shift.AFTER))
     private void init(CallbackInfo ci) {
-        this.narrow = true;
+        //this.narrow = true;
     }
 
     /*

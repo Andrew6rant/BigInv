@@ -24,7 +24,8 @@
     "client.InGameHudMixin",
     "client.InventoryScreenMixin",
     "client.MerchantScreenMixin",
-    "client.MinecraftClientMixin"
+    "client.MinecraftClientMixin",
+    "client.RecipeBookWidgetMixin"
   ],
   "injectors": {
     "defaultRequire": 1

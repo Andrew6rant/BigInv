@@ -124,7 +124,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
                     target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V"),
             index = 2)
     private int offhandSlotIndex(Slot slot, int slotId, int button, SlotActionType actionType) {
-        return button == 40 ? 76 : button;
+        return button == 40 ? 64 : button;
     }
 
     @ModifyConstant(method = {"handleHotbarKeyPressed", "onMouseClick(I)V"},

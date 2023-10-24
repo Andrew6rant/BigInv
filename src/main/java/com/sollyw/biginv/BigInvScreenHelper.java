@@ -50,10 +50,7 @@ public class BigInvScreenHelper {
             int playerEntityDrawSize = 21;
             // if handled screen is instanceof PlayerScreenHandler
             if (((PlayerEntity) entity).currentScreenHandler instanceof PlayerScreenHandler) {
-                playerEntityDrawSize = 30;
-                x0 = x - 2;
-                y0 = y + backgroundHeight - 95;
-
+                playerEntityDrawSize = 0; // Instead of drawing the player here and redirecting the original call, I just set the size to 0 and modify the original
                 context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,
                         y + backgroundHeight - 166,

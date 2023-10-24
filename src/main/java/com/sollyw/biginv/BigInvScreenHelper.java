@@ -2,13 +2,17 @@ package com.sollyw.biginv;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.sollyw.biginv.BigInvModInfo.RightmostBehaviour;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.LoomScreenHandler;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 
@@ -44,12 +48,26 @@ public class BigInvScreenHelper {
                 256,
                 256);
 
-        if (entity instanceof PlayerEntity) {
+        if (entity instanceof PlayerEntity playerEntity) {
+            if (playerEntity.getInventory().contains(Items.CHEST.getDefaultStack())) {
+                // draw inv chest
+                context.drawTexture(BigInv.id("textures/gui/backpack.png"),
+                        x + backgroundWidth - 4,
+                        y + backgroundHeight - 166,
+                        0,
+                        0,
+                        65,
+                        184,
+                        256,
+                        256);
+            }
             int x0 = x - 11;
             int y0 = y + backgroundHeight - 112;
             int playerEntityDrawSize = 21;
             // if handled screen is instanceof PlayerScreenHandler
-            if (((PlayerEntity) entity).currentScreenHandler instanceof PlayerScreenHandler) {
+            if (((PlayerEntity) entity).currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
+                playerEntityDrawSize = 0;
+            } else if (playerEntity.currentScreenHandler instanceof PlayerScreenHandler) {
                 playerEntityDrawSize = 0; // Instead of drawing the player here and redirecting the original call, I just set the size to 0 and modify the original
                 context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,
@@ -60,7 +78,7 @@ public class BigInvScreenHelper {
                         83,
                         256,
                         256);
-            } else if (((PlayerEntity) entity).currentScreenHandler instanceof GenericContainerScreenHandler) {
+            } else if (playerEntity.currentScreenHandler instanceof GenericContainerScreenHandler || ((PlayerEntity) entity).currentScreenHandler instanceof LoomScreenHandler) {
                 // if handled screen is instanceof GenericContainerScreenHandler (e.g. chest)
                 playerEntityDrawSize = 17;
                 x0 = x - 16;

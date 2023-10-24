@@ -6,6 +6,7 @@
   "mixins": [
     "CraftingScreenHandlerMixin",
     "GenericContainerScreenHandlerMixin",
+    "ItemsMixin",
     "MerchantScreenHandlerMixin",
     "PlayerInventoryMixin",
     "PlayerScreenHandler$1Mixin",
@@ -19,6 +20,8 @@
     "client.AbstractFurnaceScreenMixin",
     "client.ClientPlayerInteractionManagerMixin",
     "client.CraftingScreenMixin",
+    "client.CreativeInventoryScreenCreativeScreenHandlerMixin",
+    "client.CreativeInventoryScreenMixin",
     "client.GameOptionsMixin",
     "client.HandledScreenMixin",
     "client.InGameHudMixin",

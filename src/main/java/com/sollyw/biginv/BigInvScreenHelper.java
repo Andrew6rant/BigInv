@@ -26,6 +26,13 @@ public class BigInvScreenHelper {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, MOD_BACKGROUND);
+
+        if (entity instanceof PlayerEntity playerEntity) {
+            if (((PlayerEntity) entity).currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
+                return;
+            }
+        }
+
         // draw main inventory
         context.drawTexture(MOD_BACKGROUND,
                 x + backgroundWidth - 230,
@@ -65,9 +72,7 @@ public class BigInvScreenHelper {
             int y0 = y + backgroundHeight - 112;
             int playerEntityDrawSize = 21;
             // if handled screen is instanceof PlayerScreenHandler
-            if (((PlayerEntity) entity).currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
-                playerEntityDrawSize = 0;
-            } else if (playerEntity.currentScreenHandler instanceof PlayerScreenHandler) {
+            if (playerEntity.currentScreenHandler instanceof PlayerScreenHandler) {
                 playerEntityDrawSize = 0; // Instead of drawing the player here and redirecting the original call, I just set the size to 0 and modify the original
                 context.drawTexture(MOD_BACKGROUND,
                         x + backgroundWidth - 205,

@@ -24,6 +24,7 @@
     "client.CreativeInventoryScreenMixin",
     "client.GameOptionsMixin",
     "client.HandledScreenMixin",
+    "client.HotbarStorageMixin",
     "client.InGameHudMixin",
     "client.InventoryScreenMixin",
     "client.MerchantScreenMixin",

@@ -56,6 +56,7 @@ public class ScreenHandlerOverrides {
                                 case "generic_container" -> BigInvModInfo.GENERIC_CONTAINER;
                                 case "player" -> BigInvModInfo.PLAYER;
                                 case "merchant" -> BigInvModInfo.MERCHANT;
+                                case "creative" -> BigInvModInfo.CREATIVE;
                                 case "emulate" -> BigInvModInfo.EMULATE;
                             });
                             continue;

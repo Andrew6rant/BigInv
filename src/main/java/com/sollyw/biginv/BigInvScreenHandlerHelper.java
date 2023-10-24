@@ -2,6 +2,7 @@ package com.sollyw.biginv;
 
 import com.mojang.datafixers.util.Pair;
 import com.sollyw.biginv.mixin.SlotAccessor;
+import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.mob.MobEntity;
@@ -110,6 +111,11 @@ public class BigInvScreenHandlerHelper {
                     64,
                     armourOffsetX - 36,
                     armourOffsetY + 62);
+        } else if (player.currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
+            move(slots,
+                    64,
+                    armourOffsetX - 166,
+                    armourOffsetY + 122);
         } else {
             move(slots,
                     64,
@@ -118,15 +124,23 @@ public class BigInvScreenHandlerHelper {
         }
 
 
-
-        // armor
-        for(int row = 0; row < 4; ++row) {
-            move(slots,
-                    63 - row,
-                    armourOffsetX - 108,
-                    armourOffsetY + 8 + row * 18);
+        if (player.currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
+            // armor
+            /*for(int row = 0; row < 4; ++row) {
+                move(slots,
+                        63 - row,
+                        armourOffsetX - 108,
+                        armourOffsetY + 85 + row * 18);
+            }*/
+        } else {
+            // armor
+            for(int row = 0; row < 4; ++row) {
+                move(slots,
+                        63 - row,
+                        armourOffsetX - 108,
+                        armourOffsetY + 8 + row * 18);
+            }
         }
-
     }
 
     private static void move(Slot[] slots, int index, int x, int y) {

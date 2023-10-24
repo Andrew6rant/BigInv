@@ -25,6 +25,16 @@ import static com.sollyw.biginv.BigInv.id;
 public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScreen<CreativeInventoryScreen.CreativeScreenHandler> {
     @Shadow private static ItemGroup selectedTab;
 
+    @ModifyConstant(method = "drawForeground(Lnet/minecraft/client/gui/DrawContext;II)V", constant = @Constant(intValue = 8))
+    private int littlebiginv$modifyCreativeInventoryTextX(int constant) {
+        return -19;
+    }
+
+    @ModifyConstant(method = "drawForeground(Lnet/minecraft/client/gui/DrawContext;II)V", constant = @Constant(intValue = 6))
+    private int littlebiginv$modifyCreativeInventoryTextY(int constant) {
+        return -34;
+    }
+
     public CreativeInventoryScreenMixin(CreativeInventoryScreen.CreativeScreenHandler screenHandler, PlayerInventory playerInventory, Text text) {
         super(screenHandler, playerInventory, text);
     }
@@ -32,12 +42,12 @@ public abstract class CreativeInventoryScreenMixin extends AbstractInventoryScre
     @ModifyConstant(method = {"setSelectedTab(Lnet/minecraft/item/ItemGroup;)V", "onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V"},
             constant = @Constant(intValue = 9))
     private int littlebiginv$modifySelectedTabIndex(int constant) {
-        return 12;
+        return 14;
     }
 
     @ModifyConstant(method = "<clinit>", constant = @Constant(intValue = 45))
     private static int littlebiginv$modifyCreativeInventorySize(int constant) {
-        return 60;
+        return 84;
     }
 
     @Inject(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V", ordinal = 1, shift = At.Shift.AFTER))

@@ -171,10 +171,10 @@ public record BigInvModInfo(
             true,
             false,
             true,
-            new IntOffset(false, 27),//26
-            new IntOffset(false, 36),//40
-            new IntOffset(false, 82),//26
-            new IntOffset(false, 74),//40
+            new IntOffset(false, 27),
+            new IntOffset(false, 36),
+            new IntOffset(false, 80),
+            new IntOffset(false, 74),
             true,
             IntOffset.NONE,
             IntOffset.NONE,

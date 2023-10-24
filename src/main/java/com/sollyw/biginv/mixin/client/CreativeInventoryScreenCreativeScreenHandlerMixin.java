@@ -38,8 +38,14 @@ public abstract class CreativeInventoryScreenCreativeScreenHandlerMixin extends 
 
     @ModifyConstant(method = {"getOverflowRows()I", "quickMove(Lnet/minecraft/entity/player/PlayerEntity;I)Lnet/minecraft/item/ItemStack;", "scrollItems(F)V"}, //, "scrollItems(F)V"
             constant = @Constant(intValue = 9))
-    private int littlebiginv$changeCreativeScreenHotbar(int constant) {
-        return 12;
+    private int littlebiginv$changeCreativeScreenSlotWidth(int constant) {
+        return 14;
+    }
+
+    @ModifyConstant(method = {"getOverflowRows()I", "quickMove(Lnet/minecraft/entity/player/PlayerEntity;I)Lnet/minecraft/item/ItemStack;", "scrollItems(F)V"},
+            constant = @Constant(intValue = 5))
+    private int littlebiginv$changeCreativeScreenSlotHeight(int constant) {
+        return 6;
     }
 
     @ModifyConstant(method = "<init>",
@@ -52,20 +58,20 @@ public abstract class CreativeInventoryScreenCreativeScreenHandlerMixin extends 
     public void littlebiginv$addCreativeSlots(PlayerEntity player, CallbackInfo ci) {
         PlayerInventory playerInventory = player.getInventory();
         int i;
-        for(i = 0; i < 5; ++i) {
-            for(int j = 0; j < 12; ++j) {
-                this.addSlot(new CreativeInventoryScreen.LockableSlot(INVENTORY, i * 12 + j, -18 + j * 18, -22 + i * 18));
+        for(i = 0; i < 6; ++i) {
+            for(int j = 0; j < 14; ++j) {
+                this.addSlot(new CreativeInventoryScreen.LockableSlot(INVENTORY, i * 14 + j, -18 + j * 18, -22 + i * 18));
             }
         }
 
         // I just need to add a single playerInventory slot, my addSlot mixin will catch this and actually place the proper BigInv slots
-        this.addSlot(new Slot(playerInventory, 0, 12, 150));
+        this.addSlot(new Slot(playerInventory, 0, 14, 150));
     }
 
 
         @ModifyConstant(method = "shouldShowScrollbar()Z", constant = @Constant(intValue = 45))
     private int littlebiginv$changeShowScrollbar(int constant) {
-        return 60;
+        return 84;
     }
 
     @Override

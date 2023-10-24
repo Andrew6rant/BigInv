@@ -114,7 +114,7 @@ public class BigInvScreenHandlerHelper {
         } else if (player.currentScreenHandler instanceof CreativeInventoryScreen.CreativeScreenHandler) {
             move(slots,
                     64,
-                    armourOffsetX - 166,
+                    armourOffsetX - 164,
                     armourOffsetY + 122);
         } else {
             move(slots,

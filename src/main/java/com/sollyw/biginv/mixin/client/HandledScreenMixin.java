@@ -50,7 +50,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     }
 
     @Inject(method = "init", at = @At("TAIL"))
-    private void init(CallbackInfo ci) {
+    private void littlebiginv$injectHandledScreenInit(CallbackInfo ci) {
         ScreenHandlerExt handlerX = (ScreenHandlerExt) this.handler;
         BigInvModInfo info = handlerX.biginv$getModInfo();
 
@@ -76,7 +76,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;drawBackground(Lnet/minecraft/client/gui/DrawContext;FII)V",
                     shift = At.Shift.AFTER))
-    private void renderBigInvOverlay(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+    private void littlebiginv$renderLittleBigInvOverlay(DrawContext context, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         BigInvModInfo info = ((ScreenHandlerExt) this.handler).biginv$getModInfo();
         if (info.shouldModBackground()) {
             BigInvScreenHelper.patchScreen(
@@ -95,7 +95,7 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
     @Redirect(method = {"mouseReleased", "mouseClicked"},
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;isClickOutsideBounds(DDIII)Z"))
-    private boolean isClickOutsideBounds(HandledScreen<T> instance, double mouseX, double mouseY, int left, int top, int button) {
+    private boolean littlebiginv$isClickOutsideBounds(HandledScreen<T> instance, double mouseX, double mouseY, int left, int top, int button) {
         if (!this.isClickOutsideBounds(mouseX, mouseY, left, top, button)) return false;
         if (((ScreenHandlerExt) this.handler).biginv$getModStage() == BigInvModStage.INITIAL) return true;
         BigInvModInfo info = ((ScreenHandlerExt) this.handler).biginv$getModInfo();
@@ -123,13 +123,13 @@ public abstract class HandledScreenMixin<T extends ScreenHandler> extends Screen
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/HandledScreen;onMouseClick(Lnet/minecraft/screen/slot/Slot;IILnet/minecraft/screen/slot/SlotActionType;)V"),
             index = 2)
-    private int offhandSlotIndex(Slot slot, int slotId, int button, SlotActionType actionType) {
+    private int littlebiginv$modifyOffhandSlotIndex(Slot slot, int slotId, int button, SlotActionType actionType) {
         return button == 40 ? 64 : button;
     }
 
     @ModifyConstant(method = {"handleHotbarKeyPressed", "onMouseClick(I)V"},
             constant = @Constant(intValue = 9, ordinal = 0))
-    private int hotbarSize(int value) {
+    private int littlebiginv$modifyHotbarSize(int value) {
         return 12;
     }
 }

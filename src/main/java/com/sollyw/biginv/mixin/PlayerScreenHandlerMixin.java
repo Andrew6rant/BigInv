@@ -7,6 +7,7 @@ import com.sollyw.biginv.ScreenHandlerExt;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.RecipeInputInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.AbstractRecipeScreenHandler;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.ScreenHandlerType;
@@ -18,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerScreenHandler.class)
 public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandler<RecipeInputInventory> implements ScreenHandlerExt {
@@ -85,7 +87,7 @@ public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandl
      */
     @Overwrite
     public static boolean isInHotbar(int slot) {
-        return slot >= 60 && slot <= 72;
+        return slot >= 53 && slot <= 64;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -115,7 +117,7 @@ public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandl
                     @Constant(intValue = 36,
                             ordinal = 3)})
     private int mainInvEndHotbarStart(int value) {
-        return 53;
+        return 52;
     }
 // these don't work properly
     @ModifyConstant(method = "quickMove",
@@ -133,7 +135,7 @@ public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandl
                     @Constant(intValue = 45,
                             ordinal = 7)})
     private int hotbarEndArmourStart(int value) {
-        return 65;
+        return 66;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -143,7 +145,7 @@ public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandl
                     @Constant(intValue = 8,
                             ordinal = 1)})
     private int armourLast(int value) {
-        return 72;
+        return 69;
     }
 
     @ModifyConstant(method = "quickMove",
@@ -155,14 +157,14 @@ public abstract class PlayerScreenHandlerMixin extends AbstractRecipeScreenHandl
                     @Constant(intValue = 45,
                             ordinal = 4)})
     private int armourEndOffhandStart(int value) {
-        return 69;
+        return 70;
     }
 
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 46,
                             ordinal = 0))
     private int offhandEnd(int value) {
-        return 70;
+        return 71;
     }
 
     /**

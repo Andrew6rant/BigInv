@@ -33,7 +33,7 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 
     @Inject(method = "drawBackground", at = @At(value = "INVOKE",
            target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V", shift = At.Shift.AFTER))
-    protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
+    protected void littlebiginv$drawBackground(DrawContext context, float delta, int mouseX, int mouseY, CallbackInfo ci) {
         int i = this.x;
         int j = this.y;
         if (this.client.player.getInventory().contains(Items.CRAFTING_TABLE.getDefaultStack())) {
@@ -45,18 +45,18 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
 
     @ModifyConstant(method = "drawBackground(Lnet/minecraft/client/gui/DrawContext;FII)V",
             constant = {@Constant(intValue = 51, ordinal = 0),@Constant(intValue = 51, ordinal = 1)})
-    public int tifyi$movePlayerRenderX(int constant) {
+    public int littlebiginv$modifyBackgroundX(int constant) {
         return -2;
     }
 
     @ModifyConstant(method = "drawBackground(Lnet/minecraft/client/gui/DrawContext;FII)V",
             constant = {@Constant(intValue = 75, ordinal = 0),@Constant(intValue = 75, ordinal = 1)})
-    public int tifyi$movePlayerRenderY(int constant) {
+    public int littlebiginv$modifyBackgroundY(int constant) {
         return 72;
     }
 
     @ModifyArg(method = "init()V", index = 8, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/widget/TexturedButtonWidget;<init>(IIIIIIILnet/minecraft/util/Identifier;Lnet/minecraft/client/gui/widget/ButtonWidget$PressAction;)V"))
-    private ButtonWidget.PressAction tifyi$modifyRecipeBookXY(ButtonWidget.PressAction action) {
+    private ButtonWidget.PressAction littlebiginv$modifyRecipeBookXY(ButtonWidget.PressAction action) {
         return (buttonWidget) -> {
             this.recipeBook.toggleOpen();
             this.x = this.recipeBook.findLeftEdge(this.width, this.backgroundWidth);
@@ -66,26 +66,12 @@ public abstract class InventoryScreenMixin extends AbstractInventoryScreen<Playe
     }
 
     @ModifyConstant(method = "init()V", constant = @Constant(intValue = 104))
-    private int tifyi$moveRecipeBookX(int constant) {
+    private int littlebiginv$moveRecipeBookX(int constant) {
         return 142;
     }
 
     @ModifyConstant(method = "init()V", constant = @Constant(intValue = 22, ordinal = 0))
-    private int tifyi$moveRecipeBookY(int constant) {
+    private int littlebiginv$moveRecipeBookY(int constant) {
         return 24;
     }
-
-    /*
-    @Redirect(method = "render",
-            at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawBackground(Lnet/minecraft/client/util/math/MatrixStack;FII)V"),
-            allow = 1)
-    private void drawBackground(InventoryScreen instance, MatrixStack matrices, float delta, int mouseX, int mouseY) {
-        // nom
-    }*/
-
-    /*@Redirect(method = "drawBackground", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/ingame/InventoryScreen;drawEntity(Lnet/minecraft/client/gui/DrawContext;IIIFFLnet/minecraft/entity/LivingEntity;)V"))
-    private void drawEntity(DrawContext context, int x, int y, int size, float mouseX, float mouseY, LivingEntity entity) {
-        // nom
-    }*/
 }

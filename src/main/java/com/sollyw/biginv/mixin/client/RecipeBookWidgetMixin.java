@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.*;
 public class RecipeBookWidgetMixin {
     @ModifyConstant(method = {"reset()V", "refreshTabButtons()V", "render(Lnet/minecraft/client/gui/DrawContext;IIF)V", "mouseClicked(DDI)Z", "isClickOutsideBounds(DDIIIII)Z"},
             constant = @Constant(intValue = 147, ordinal = 0))
-    private int littlebiginv$recipeBookWidgetOffset(int value) {
+    private int littlebiginv$recipeBookWidgetXOffset(int value) {
         return 254;
     }
 

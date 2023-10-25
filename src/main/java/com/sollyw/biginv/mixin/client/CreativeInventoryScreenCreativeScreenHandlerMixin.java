@@ -65,7 +65,10 @@ public abstract class CreativeInventoryScreenCreativeScreenHandlerMixin extends 
         }
 
         // I just need to add a single playerInventory slot, my addSlot mixin will catch this and actually place the proper BigInv slots
-        this.addSlot(new Slot(playerInventory, 0, 14, 150));
+        this.addSlot(new Slot(playerInventory, 0, -999, -999));
+        //for (i = 0; i < 60; ++i) {
+        //    this.addSlot(new Slot(playerInventory, i, -999, -999));
+        //}
     }
 
 

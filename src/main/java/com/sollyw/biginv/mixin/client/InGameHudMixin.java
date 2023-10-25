@@ -35,7 +35,7 @@ public abstract class InGameHudMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 0))
-    private void renderHotbarItem(InGameHud instance, DrawContext context, int x, int y, float tickDelta, PlayerEntity player, ItemStack stack, int seed) {
+    private void littlebiginv$renderHotbarItem(InGameHud instance, DrawContext context, int x, int y, float tickDelta, PlayerEntity player, ItemStack stack, int seed) {
         //int n2 = (x + 40 - this.scaledWidth / 2) / 20;
         //System.out.println("this.scaledWidth: " + this.scaledWidth);
         this.renderHotbarItem(context,
@@ -61,7 +61,7 @@ public abstract class InGameHudMixin {
                     target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 1),
             index = 1)
-    private int moveOffhandLeft(int x) {
+    private int littlebiginv$moveOffhandLeft(int x) {
         return x - 30;
     }
 
@@ -70,7 +70,7 @@ public abstract class InGameHudMixin {
                     target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IIFLnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V",
                     ordinal = 2),
             index = 1)
-    private int moveOffhandRight(int x) {
+    private int littlebiginv$moveOffhandRight(int x) {
         return x + 30;
     }
 
@@ -79,7 +79,7 @@ public abstract class InGameHudMixin {
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 2),
             index = 1)
-    private int moveOffhandItemLeft(int x) {
+    private int littlebiginv$moveOffhandItemLeft(int x) {
         return x - 30;
     }
 
@@ -88,7 +88,7 @@ public abstract class InGameHudMixin {
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 3),
             index = 1)
-    private int moveOffhandItemRight(int x) {
+    private int littlebiginv$moveOffhandItemRight(int x) {
         return x + 30;
     }
 
@@ -96,7 +96,7 @@ public abstract class InGameHudMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 0))
-    private void drawTexture(DrawContext context, Identifier texture, int x, int y, int u, int v, int width, int height) {
+    private void littlebiginv$drawHotbar(DrawContext context, Identifier texture, int x, int y, int u, int v, int width, int height) {
         //RenderSystem.setShaderTexture(0, BigInvScreenHelper.BIG_HOTBAR);
         context.drawTexture(BigInvScreenHelper.BIG_HOTBAR, x - 30, y, 0, 0, 242, height, 256, 32);
         //RenderSystem.setShaderTexture(0, WIDGETS_TEXTURE);
@@ -106,7 +106,7 @@ public abstract class InGameHudMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/DrawContext;drawTexture(Lnet/minecraft/util/Identifier;IIIIII)V",
                     ordinal = 1), index = 1)
-    private int moveSelectionOutline(int x) {
+    private int littlebiginv$moveSelectionOutline(int x) {
         return x - 30;
     }
 }

@@ -17,7 +17,7 @@ public abstract class MerchantScreenHandlerMixin implements ScreenHandlerExt {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/screen/MerchantScreenHandler;addSlot(Lnet/minecraft/screen/slot/Slot;)Lnet/minecraft/screen/slot/Slot;"),
             index = 0)
-    private Slot addSlot(Slot par1) {
+    private Slot littlebiginv$merchantAddSlot(Slot par1) {
         if (par1.inventory instanceof MerchantInventory) {
             SlotAccessor slotX = (SlotAccessor) par1;
             slotX.setX(par1.x - 20);

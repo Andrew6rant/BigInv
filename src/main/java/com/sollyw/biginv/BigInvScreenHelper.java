@@ -61,7 +61,7 @@ public class BigInvScreenHelper {
                 context.drawTexture(BigInv.id("textures/gui/backpack.png"),
                         x + backgroundWidth - 4,
                         y + backgroundHeight - 166,
-                        0,
+                        96,
                         0,
                         65,
                         184,

@@ -26,7 +26,7 @@ public abstract class GameOptionsMixin {
                     opcode = Opcodes.PUTFIELD,
                     shift = At.Shift.AFTER,
                     target = "Lnet/minecraft/client/option/GameOptions;hotbarKeys:[Lnet/minecraft/client/option/KeyBinding;"))
-    private void init(CallbackInfo ci) {
+    private void littlebiginv$injectKeybinds(CallbackInfo ci) {
         this.hotbarKeys = ArrayUtils.addAll(this.hotbarKeys,
                 new KeyBinding("key.hotbar.a", GLFW.GLFW_KEY_0, KeyBinding.INVENTORY_CATEGORY),
                 new KeyBinding("key.hotbar.b", GLFW.GLFW_KEY_MINUS, KeyBinding.INVENTORY_CATEGORY),

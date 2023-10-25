@@ -7,9 +7,16 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(ForgingScreenHandler.class)
 public abstract class ForgingScreenHandlerMixin {
-    @ModifyConstant(method = "quickMove",
-            constant = @Constant(intValue = 39))
-    private int value(int constant) {
-        return 111;
+
+    @ModifyConstant(method = "getPlayerHotbarEndIndex()I",
+            constant = @Constant(intValue = 9))
+    private int littlebiginv$changePlayerHotbarEndIndex(int constant) {
+        return 12;
+    }
+
+    @ModifyConstant(method = "getPlayerInventoryEndIndex()I",
+            constant = @Constant(intValue = 27))
+    private int littlebiginv$changePlayerInventoryEndIndex(int constant) {
+        return 36;
     }
 }

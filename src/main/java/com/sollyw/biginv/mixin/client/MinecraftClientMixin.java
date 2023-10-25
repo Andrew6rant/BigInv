@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class MinecraftClientMixin {
     @ModifyConstant(method = "handleInputEvents",
             constant = @Constant(intValue = 9, ordinal = 0))
-    private int hotbarSize(int value) {
+    private int littlebiginv$modifyHotbarSize(int value) {
         return 12;
     }
 
@@ -19,7 +19,7 @@ public abstract class MinecraftClientMixin {
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/network/ClientPlayerInteractionManager;clickCreativeStack(Lnet/minecraft/item/ItemStack;I)V"),
             index = 1)
-    public int pickSlot(int value) {
+    public int littlebiginv$modifyPickSlot(int value) {
         return value + 59; // Don't ask
     }
 }

@@ -11,6 +11,6 @@ public class HotbarStorageMixin {
     @ModifyConstant(method = {"<clinit>", "<init>(Ljava/io/File;Lcom/mojang/datafixers/DataFixer;)V", "load()V", "save()V"},
             constant = @Constant(intValue = 9))
     private static int littlebiginv$modifySelectedTabIndex(int constant) {
-        return 12;
+        return 14;
     }
 }

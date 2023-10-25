@@ -20,21 +20,21 @@ public abstract class MerchantScreenMixin extends HandledScreen<MerchantScreenHa
 
     @Inject(method = "<init>",
             at = @At("TAIL"))
-    private void init(MerchantScreenHandler handler, PlayerInventory inventory, Text title, CallbackInfo ci) {
+    private void littlebiginv$initMerchantWidth(MerchantScreenHandler handler, PlayerInventory inventory, Text title, CallbackInfo ci) {
         this.backgroundWidth = 238;
     }
 
     @ModifyConstant(method = "drawLevelInfo",
             constant = @Constant(intValue = 136),
             expect = 3)
-    private int levelBarOffsetX(int value) {
+    private int littlebiginv$modifyMerchantLevelBarOffsetX(int value) {
         return 116;
     }
 
     @ModifyConstant(method = "drawLevelInfo",
             constant = @Constant(intValue = 16),
             expect = 3)
-    private int levelBarOffsetY(int value) {
+    private int littlebiginv$modifyMerchantLevelBarOffsetY(int value) {
         return 96;
     }
 /*
@@ -63,7 +63,7 @@ public abstract class MerchantScreenMixin extends HandledScreen<MerchantScreenHa
     @Redirect(method = "render",
             at = @At(value = "INVOKE",
                     target = "Lnet/minecraft/client/gui/screen/ingame/MerchantScreen;isPointWithinBounds(IIIIDD)Z"))
-    private boolean isPointWithinBounds(MerchantScreen instance, int x, int y, int width, int height, double pointX, double pointY) {
+    private boolean littlebiginv$redirectMerchantIsPointWithinBounds(MerchantScreen instance, int x, int y, int width, int height, double pointX, double pointY) {
         return this.isPointWithinBounds(x - 20, y + 80, width, height, pointX, pointY);
     }
 

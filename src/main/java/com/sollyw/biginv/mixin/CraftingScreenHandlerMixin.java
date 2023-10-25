@@ -9,13 +9,13 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public abstract class CraftingScreenHandlerMixin {
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 46))
-    private int invEnd(int constant) {
+    private int littlebiginv$modifyInvEnd(int constant) {
         return 70;
     }
 
     @ModifyConstant(method = "quickMove",
             constant = @Constant(intValue = 37))
-    private int hotbarStart(int constant) {
+    private int littlebiginv$modifyHotbarStart(int constant) {
         return 58;
     }
 }
